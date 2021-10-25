@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="split_pane" dividerPositions="0.7811244979919679" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane fx:id="anchor_up" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <ImageView fx:id="pic" fitHeight="290.0" fitWidth="580.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="play_count" layoutX="14.0" layoutY="286.0" prefHeight="30.0" prefWidth="113.0" text="play_count" textFill="WHITE" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="20.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="comments" layoutX="150.0" layoutY="274.0" prefHeight="30.0" prefWidth="103.0" text="comments" textFill="WHITE" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="150.0">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="fav" layoutX="287.0" layoutY="273.0" prefHeight="30.0" prefWidth="120.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="287.0">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="video_length" layoutX="500.0" layoutY="274.0" prefHeight="30.0" prefWidth="84.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="3.6" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="12.0" />
+               </font>
+            </Label>
+         </children>
+    </AnchorPane>
+    <AnchorPane fx:id="anchor_down" minHeight="0.0" minWidth="0.0" prefHeight="94.0" prefWidth="599.0">
+         <children>
+            <Label fx:id="title" layoutX="14.0" layoutY="14.0" prefHeight="43.0" prefWidth="469.0" text="标题">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="author_name" layoutX="14.0" layoutY="61.0" prefHeight="18.0" prefWidth="103.0" text="Uploader Name" />
+            <Label fx:id="video_date" layoutX="139.0" layoutY="61.0" prefHeight="18.0" prefWidth="71.0" text="Length" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>

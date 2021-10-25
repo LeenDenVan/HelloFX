@@ -10,11 +10,19 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
-public class BilibiliSearchSpider {
+public class BilibiliSearchSpider implements Iterable<BilibiliSearchSpider.Result> {
     String url = "https://api.bilibili.com/x/web-interface/search/type?context=";
     Connection.Response connec;
     Gson gson;
+
+    @Override
+    public Iterator<Result> iterator() {
+        return this.res.iterator();
+    }
+
     class Result {
         @Setter @Getter private long id;
         @Setter @Getter private String author;
@@ -39,28 +47,28 @@ public class BilibiliSearchSpider {
         @Setter @Getter
         private int numPages;
         @Setter @Getter
-        private ArrayList<Result> result;
+        private Collection<Result> result;
     }
     public class Ret{
         @Getter @Setter private Data data;
     }
 
-    @Getter public ArrayList<Result> res;
+    @Getter public Collection<Result> res;
     @Getter private Data data;
     @Getter private String keyword;
     int current_page = 1;
 
     public BilibiliSearchSpider(String keyword) throws IOException {
         this.keyword = keyword;
+        gson = new Gson();
         setupConnection(urlBuilder(1));
     }
 
     public void setupConnection(String urln) throws IOException {
         connec = Jsoup.connect(urln).ignoreContentType(true).execute();
         String json = connec.body();
-        //System.out.println(json);
-        gson = new Gson();
-        data = gson.fromJson(json,Ret.class).data;
+        System.out.println(json);
+        data = gson.fromJson(json,Ret.class).getData();
         res = data.getResult();
         processTitles();
     }
@@ -68,6 +76,7 @@ public class BilibiliSearchSpider {
     private void processTitles(){
         for(Result r:data.result){
             r.title=r.title.replace("<em class=\"keyword\">","").replace("</em>","");
+            r.pic="https:"+r.pic;
         }
     }
 
